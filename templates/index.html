@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realize - Powerful & Quick Resume Analyzer using NLP and LLM</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/components.css">
+    <link rel="stylesheet" href="static/css/animations.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/7.15.0/simpleicons.min.css">
+    <style>
+        .si-discord::before {
+            content: '';
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+    
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i style="font-size: 2em;">☄️</i>
+                    <h1>Realize</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#analyze" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analyze</span>
+                    </a>
+                    <a href="#about" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">
+                            <i class="fas fa-rocket"></i>
+                            Unlock Your IT Career Potential
+                        </h2>
+                        <p class="hero-subtitle">
+                            Professional resume analysis powered by advanced NLP technology. 
+                            Get detailed insights about your IT skills, career recommendations, 
+                            and gap analysis to land your dream job.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <i class="fas fa-code"></i>
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Skills Analyzed</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Resumes Processed</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-bullseye"></i>
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Accuracy Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Upload PDF Resume</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Analysis</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Detailed Report</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Section -->
+        <section id="analyze" class="analyze-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-microscope"></i>
+                    Resume Analysis
+                </h2>
+                
+                <!-- Upload Area -->
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Drop your PDF resume here</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" id="resumeFile" accept=".pdf" hidden>
+                        <button class="btn btn-primary" onclick="document.getElementById('resumeFile').click()">
+                            <i class="fas fa-folder-open"></i>
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Comparison Section -->
+                <div class="job-comparison" id="jobComparison" style="display: none;">
+                    <h3>Compare with Job Description (Optional)</h3>
+                    <div class="form-group">
+                        <label for="jobDescription">Paste job description here:</label>
+                        <textarea id="jobDescription" placeholder="Paste the job description to compare your resume against the specific requirements..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Analysis Button -->
+                <div class="action-buttons" style="display: none;" id="actionButtons">
+                    <button class="btn btn-success" id="analyzeBtn">
+                        <i class="fas fa-play"></i>
+                        Analyze Resume
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-refresh"></i>
+                        Reset
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loadingState" style="display: none;">
+                    <div class="loading-content">
+                        <div class="spinner"></div>
+                        <h3>Analyzing your resume...</h3>
+                        <p>This may take a few moments</p>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <!-- Results will be populated here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Powerful Features
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Skill Detection</h3>
+                        <p>Automatically identify and categorize IT skills including programming languages, frameworks, tools, and certifications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Experience Analysis</h3>
+                        <p>Assess experience levels, career progression, and identify leadership indicators and technical depth.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Job Matching</h3>
+                        <p>Compare your skills with job requirements and get specific recommendations for improvement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3>Career Guidance</h3>
+                        <p>Receive personalized career path suggestions and learning recommendations based on market trends.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certification Insights</h3>
+                        <p>Get recommendations for relevant certifications that can boost your career prospects.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Smart Recommendations</h3>
+                        <p>Receive actionable insights and suggestions to improve your resume and career prospects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            About RealiZe
+                        </h2>
+                        <p>
+                            RealiZe is a powerful and quick resume analyzer using NLP and LLM technology
+                            to provide comprehensive analysis of IT resumes. Built by Amir Hafizi Bin Musa,
+                            a UiTM Science Computer Student, specifically for technology professionals.
+                            It helps you understand your strengths, identify areas for improvement, and discover new career opportunities.
+                        </p>
+                        <div class="tech-stack">
+                            <h4>Powered by:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">
+                                    <i class="fas fa-brain"></i>
+                                    LLMs
+                                </span>
+                                <span class="tech-tag">
+                                    <i class="fas fa-flask"></i>
+                                    Flask
+                                </span>
+                                <span class="tech-tag">
+                                    <i class="fas fa-cloud"></i>
+                                    NLP Technology
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <span class="stat-value">< 1 min</span>
+                                <span class="stat-description">Analysis Time</span>
+                            </div>
+                        </div>
+                        <div class="about-stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <span class="stat-value">100%</span>
+                                <span class="stat-description">Secure Processing</span>
+                            </div>
+                        </div>
+                        <div class="about-stat">
+                            <i class="fas fa-chart-pie"></i>
+                            <div>
+                                <span class="stat-value">Detailed</span>
+                                <span class="stat-description">Insights</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RealiZe</h3>
+                    <p>Powerful & quick resume analyzer using NLP and LLM technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">Skill Analysis</a></li>
+                        <li><a href="#">Career Guidance</a></li>
+                        <li><a href="#">Job Matching</a></li>
+                        <li><a href="#">Learning Paths</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/YoRzHe-HotaaRu" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/amir-hafizi-musa-5530b9364/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://discord.com/users/330997221334056971" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RealiZe. Made by Amir Hafizi Bin Musa, UiTM Science Computer Student. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/main.js"></script>
+    <script src="static/js/analyzer.js"></script>
+    <script src="static/js/charts.js"></script>
+</body>
+</html>
